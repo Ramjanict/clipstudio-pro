@@ -1,0 +1,40 @@
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: vps_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres_password_123
+      POSTGRES_DB: video_editing_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - vps_db_data:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: video_studio_backend
+    restart: always
+    ports:
+      - "3011:3000"
+    environment:
+      - PORT=3000
+      - NODE_ENV=production
+      - DATABASE_URL=${DATABASE_URL:-postgresql://postgres:postgres_password_123@postgres:5432/video_editing_db?schema=public}
+      - BACKEND_URL=${BACKEND_URL:-http://video-editing.duckdns.org}
+      - JWT_SECRET=${JWT_SECRET:-super_secret_vps_jwt_key_change_me}
+      - JWT_EXPIRES_IN=7d
+      - SUPER_ADMIN_EMAIL=${SUPER_ADMIN_EMAIL:-admin@videostudio.com}
+    volumes:
+      - backend_uploads_data:/app/uploads
+    depends_on:
+      - postgres
+
+volumes:
+  backend_uploads_data:
+    driver: local
+  vps_db_data:
+    driver: local
