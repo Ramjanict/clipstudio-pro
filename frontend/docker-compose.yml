@@ -1,0 +1,11 @@
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - VITE_BACKEND_URL=https://video-editing.duckdns.org
+    container_name: video_studio_frontend
+    restart: always
+    ports:
+      - "3010:80"
