@@ -14,9 +14,9 @@ The high-performance REST and WebSocket API powering **ClipStudio Pro**. Built w
 
 | Resource | Live Production URL |
 | :--- | :--- |
-| **Backend API Base** | [https://clipstudio-backend.onrender.com](https://clipstudio-backend.onrender.com) |
-| **Interactive Swagger API Docs** | [https://clipstudio-backend.onrender.com/api/docs](https://clipstudio-backend.onrender.com/api/docs) |
-| **Alternative Swagger Route** | [https://clipstudio-backend.onrender.com/docs](https://clipstudio-backend.onrender.com/docs) |
+| **Backend API Base** | [https://clipstudio-pro.onrender.com](https://clipstudio-pro.onrender.com) |
+| **Interactive Swagger API Docs** | [https://clipstudio-pro.onrender.com/api/docs](https://clipstudio-pro.onrender.com/api/docs) |
+| **Alternative Swagger Route** | [https://clipstudio-pro.onrender.com/docs](https://clipstudio-pro.onrender.com/docs) |
 | **Production Frontend App** | [https://clipstudio-pro.vercel.app](https://clipstudio-pro.vercel.app) |
 
 ---
@@ -79,7 +79,7 @@ Configure the following variables in `backend/.env` or in your Render environmen
 
 ## 📚 API Endpoints Summary
 
-Explore the complete, interactive request/response models via Swagger at [https://clipstudio-backend.onrender.com/api/docs](https://clipstudio-backend.onrender.com/api/docs).
+Explore the complete, interactive request/response models via Swagger at [https://clipstudio-pro.onrender.com/api/docs](https://clipstudio-pro.onrender.com/api/docs).
 
 ### Authentication (`/api/auth`)
 - `POST /api/auth/register` — Register a new creator account

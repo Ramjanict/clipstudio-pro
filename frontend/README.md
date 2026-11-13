@@ -16,8 +16,8 @@
 | Service | Live URL |
 | :--- | :--- |
 | **Production Web Application** | [https://clipstudio-pro.vercel.app](https://clipstudio-pro.vercel.app) |
-| **Connected Live Backend API** | [https://clipstudio-backend.onrender.com](https://clipstudio-backend.onrender.com) |
-| **Interactive API Documentation** | [https://clipstudio-backend.onrender.com/api/docs](https://clipstudio-backend.onrender.com/api/docs) |
+| **Connected Live Backend API** | [https://clipstudio-pro.onrender.com](https://clipstudio-pro.onrender.com) |
+| **Interactive API Documentation** | [https://clipstudio-pro.onrender.com/api/docs](https://clipstudio-pro.onrender.com/api/docs) |
 
 ---
 
@@ -91,7 +91,7 @@ Create a `.env` file in the `frontend/` directory:
 
 ```env
 # URL of the ClipStudio Pro NestJS Backend
-VITE_BACKEND_URL=https://clipstudio-backend.onrender.com
+VITE_BACKEND_URL=https://clipstudio-pro.onrender.com
 
 # For local development with local backend:
 # VITE_BACKEND_URL=http://localhost:3000
@@ -140,7 +140,7 @@ To deploy this frontend to **Vercel**:
    - **Output Directory**: `dist`
    - **Install Command**: `npm install`
 3. In **Environment Variables**:
-   - Add `VITE_BACKEND_URL` = `https://clipstudio-backend.onrender.com`
+   - Add `VITE_BACKEND_URL` = `https://clipstudio-pro.onrender.com`
 4. Deploy! Your app will be live at `https://clipstudio-pro.vercel.app`.
 
 ---
