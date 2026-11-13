@@ -13,14 +13,15 @@ export class AuthService implements OnModuleInit {
   ) {}
 
   async onModuleInit() {
-    await this.seedSuperAdmin();
+    await this.seedDefaultUsers();
   }
 
-  private async seedSuperAdmin() {
+  private async seedDefaultUsers() {
     try {
+      // 1. Seed Super Admin
       const email = (process.env.SUPER_ADMIN_EMAIL || 'admin@videostudio.com').toLowerCase().trim();
-      const existing = await this.prisma.user.findUnique({ where: { email } });
-      if (!existing) {
+      const existingAdmin = await this.prisma.user.findUnique({ where: { email } });
+      if (!existingAdmin) {
         const hashedPassword = await bcrypt.hash('Admin123!', 10);
         await this.prisma.user.create({
           data: {
@@ -33,8 +34,25 @@ export class AuthService implements OnModuleInit {
         });
         console.log(`[AuthService] Auto-seeded default Super Admin: ${email} / Admin123!`);
       }
+
+      // 2. Seed Standard Demo User
+      const demoEmail = 'user@videostudio.com';
+      const existingUser = await this.prisma.user.findUnique({ where: { email: demoEmail } });
+      if (!existingUser) {
+        const hashedPassword = await bcrypt.hash('User123!', 10);
+        await this.prisma.user.create({
+          data: {
+            firstName: 'Demo',
+            lastName: 'User',
+            email: demoEmail,
+            password: hashedPassword,
+            role: 'USER',
+          },
+        });
+        console.log(`[AuthService] Auto-seeded default User: ${demoEmail} / User123!`);
+      }
     } catch (err: any) {
-      console.error('[AuthService] Failed to seed default Super Admin:', err?.message || err);
+      console.error('[AuthService] Failed to seed default users:', err?.message || err);
     }
   }
 

@@ -1,98 +1,169 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# ClipStudio Pro — Backend API & Distributed Render Engine
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+[![NestJS](https://img.shields.io/badge/NestJS-11.x-E0234E?logo=nestjs&logoColor=white)](https://nestjs.com/)
+[![Prisma](https://img.shields.io/badge/Prisma-6.x-2D3748?logo=prisma&logoColor=white)](https://www.prisma.io/)
+[![PostgreSQL](https://img.shields.io/badge/Neon-PostgreSQL-00E599?logo=postgresql&logoColor=white)](https://neon.tech/)
+[![Cloudinary](https://img.shields.io/badge/Cloudinary-Media%20CDN-3448C5?logo=cloudinary&logoColor=white)](https://cloudinary.com/)
+[![Render](https://img.shields.io/badge/Deployed%20on-Render-46E3B7?logo=render&logoColor=white)](https://render.com/)
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+The high-performance REST and WebSocket API powering **ClipStudio Pro**. Built with **NestJS 11**, **Prisma ORM**, **Neon PostgreSQL**, **Fluent-FFmpeg**, and **Cloudinary**, this backend orchestrates user management, project state persistence, media processing, sprite sheet extraction, server-side video rendering, and distributed browser worker rendering clusters.
 
-## Description
+---
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## 🌐 Live Production Deployment
 
-## Project setup
+| Resource | Live Production URL |
+| :--- | :--- |
+| **Backend API Base** | [https://clipstudio-backend.onrender.com](https://clipstudio-backend.onrender.com) |
+| **Interactive Swagger API Docs** | [https://clipstudio-backend.onrender.com/api/docs](https://clipstudio-backend.onrender.com/api/docs) |
+| **Alternative Swagger Route** | [https://clipstudio-backend.onrender.com/docs](https://clipstudio-backend.onrender.com/docs) |
+| **Production Frontend App** | [https://clipstudio-pro.vercel.app](https://clipstudio-pro.vercel.app) |
 
+---
+
+## 🔐 Demo & Testing Credentials
+
+The backend automatically seeds both an administrator and standard user account on initialization:
+
+| Account Type | Email | Password | Role | Capabilities |
+| :--- | :--- | :--- | :--- | :--- |
+| **Super Admin** | `admin@videostudio.com` | `Admin123!` | `SUPER_ADMIN` | Full access, user management, role elevation, cluster metrics, project administration |
+| **Demo User** | `user@videostudio.com` | `User123!` | `USER` | Standard video creator: create projects, upload media, timeline editing, cloud exports |
+
+> **Note:** Public self-registration is fully supported. Any user can create a new account via `POST /api/auth/register` or directly from the frontend user interface.
+
+---
+
+## 🚀 Key Features
+
+- **🔐 Authentication & RBAC**: JWT-based authentication with `bcrypt` password encryption and role-based guards (`USER`, `ADMIN`, `SUPER_ADMIN`).
+- **📁 Multi-Track Project Persistence**: Create, retrieve, update, and manage timeline projects with multi-track layout, resolution, frame rate, and version history.
+- **☁️ Cloudinary Media Pipeline**: Direct media uploads, cloud storage, automatic video thumbnail generation, and timeline scrubbing sprite-sheets.
+- **🎬 Server-Side FFmpeg Render Engine**: Industrial-grade video rendering via `fluent-ffmpeg` and `@ffmpeg-installer/ffmpeg`. Supports multi-track layer composition, scaling, transitions, audio mixing, and export to standard MP4 formats.
+- **⚡ Distributed Render Cluster (WebSockets)**: Socket.IO gateway (`/rendering`) that chunks video frames and distributes rendering jobs across connected browser worker nodes for accelerated cluster-based exports.
+- **📊 Admin Monitoring & Metrics**: Endpoints to inspect system resources, database health, registered users, and active render tasks.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Framework**: [NestJS 11](https://nestjs.com/) (Express platform)
+- **Database ORM**: [Prisma 6.19.3](https://www.prisma.io/)
+- **Database Engine**: [Neon Serverless PostgreSQL](https://neon.tech/)
+- **Media Transcoding**: [FFmpeg](https://ffmpeg.org/) & `fluent-ffmpeg`
+- **Cloud Asset Storage**: [Cloudinary](https://cloudinary.com/)
+- **Real-Time WebSockets**: `@nestjs/websockets` + Socket.IO
+- **API Documentation**: OpenAPI / Swagger (`@nestjs/swagger`)
+- **Deployment Platform**: Docker on [Render](https://render.com/)
+
+---
+
+## ⚙️ Environment Variables
+
+Configure the following variables in `backend/.env` or in your Render environment dashboard:
+
+| Variable | Description | Example / Default |
+| :--- | :--- | :--- |
+| `PORT` | HTTP Server port | `3000` |
+| `NODE_ENV` | Environment mode | `production` or `development` |
+| `DATABASE_URL` | Neon/Postgres connection string with SSL | `postgresql://user:pass@ep-...neon.tech/neondb?sslmode=require` |
+| `JWT_SECRET` | Secret key for signing JWT tokens | `super_secret_jwt_key_change_me` |
+| `JWT_EXPIRES_IN` | Token expiration time | `7d` |
+| `SUPER_ADMIN_EMAIL` | Default email for seeded Super Admin | `admin@videostudio.com` |
+| `CLOUDINARY_CLOUD_NAME` | Cloudinary account cloud name | `dmeg0t89b` |
+| `CLOUDINARY_API_KEY` | Cloudinary API Key | `547359116116553` |
+| `CLOUDINARY_API_SECRET` | Cloudinary API Secret | `xH1S1jcP117x0...` |
+| `CLOUDINARY_URL` | Cloudinary complete connection URL | `cloudinary://API_KEY:API_SECRET@CLOUD_NAME` |
+
+---
+
+## 📚 API Endpoints Summary
+
+Explore the complete, interactive request/response models via Swagger at [https://clipstudio-backend.onrender.com/api/docs](https://clipstudio-backend.onrender.com/api/docs).
+
+### Authentication (`/api/auth`)
+- `POST /api/auth/register` — Register a new creator account
+- `POST /api/auth/login` — Login and receive a JWT Bearer token
+- `GET /api/auth/profile` — Retrieve current authenticated user profile
+
+### Projects (`/api/projects`)
+- `GET /api/projects` — List all projects belonging to the authenticated user
+- `POST /api/projects` — Create a new timeline project
+- `GET /api/projects/:id` — Get project details and active timeline tracks
+- `PUT /api/projects/:id` — Save timeline project changes
+- `DELETE /api/projects/:id` — Delete a project
+- `POST /api/projects/:id/versions` — Create a timeline version snapshot
+
+### Asset Management (`/api/assets`)
+- `GET /api/assets` — List uploaded assets
+- `POST /api/assets/upload` — Upload video, image, or audio asset to Cloudinary
+- `DELETE /api/assets/:id` — Remove an asset
+
+### Video Export & Rendering (`/api/export`)
+- `POST /api/export` — Queue a server-side FFmpeg video export job
+- `GET /api/export/status/:jobId` — Query real-time rendering progress
+- `GET /api/export/download/:jobId` — Download finished rendered MP4 video
+
+### Admin Management (`/api/admin`) *(Requires `SUPER_ADMIN` or `ADMIN` role)*
+- `GET /api/admin/users` — List registered users
+- `PUT /api/admin/users/:id/role` — Update user access level
+- `DELETE /api/admin/users/:id` — Delete a user account
+- `GET /api/admin/stats` — Overall system, user, and render metrics
+
+---
+
+## 💻 Local Development Setup
+
+### 1. Prerequisites
+- **Node.js**: v20+ or v22+
+- **PostgreSQL**: Neon cloud database or local instance
+- **FFmpeg**: System FFmpeg installed and in PATH (or bundled via `@ffmpeg-installer/ffmpeg`)
+
+### 2. Installation
 ```bash
-$ npm install
+# Navigate to the backend directory
+cd backend
+
+# Install project dependencies
+npm install
 ```
 
-## Compile and run the project
-
+### 3. Generate Database Client & Sync Schema
 ```bash
-# development
-$ npm run start
+# Generate Prisma Client
+npx prisma generate
 
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+# Push database schema to PostgreSQL
+npx prisma db push
 ```
 
-## Run tests
-
+### 4. Run Development Server
 ```bash
-# unit tests
-$ npm run test
+# Start backend in watch/development mode
+npm run start:dev
+```
+The server will start at `http://localhost:3000` with Swagger available at `http://localhost:3000/api/docs`.
 
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+### 5. Build for Production
+```bash
+npm run build
+npm run start:prod
 ```
 
-## Deployment
+---
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+## 🐳 Docker Deployment
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
-
+The backend contains a production-ready multi-stage `Dockerfile`:
 ```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
+# Build Docker image
+docker build -t clipstudio-backend .
+
+# Run container
+docker run -p 3000:3000 --env-file .env clipstudio-backend
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+---
 
-## Resources
-
-Check out a few resources that may come in handy when working with NestJS:
-
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+## 📄 License
+This project is licensed under the MIT License.
