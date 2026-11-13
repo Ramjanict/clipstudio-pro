@@ -209,7 +209,7 @@ export class ExportService {
       throw new BadRequestException('No video clips to export');
     }
 
-    const tempFolder = join(os.tmpdir(), 'clipstudio-renders');
+    const tempFolder = path.join(os.tmpdir(), 'clipstudio-renders');
     if (!fs.existsSync(tempFolder)) {
       fs.mkdirSync(tempFolder, { recursive: true });
     }
@@ -427,7 +427,4 @@ export class ExportService {
       },
     });
   }
-}
-function join(tmpdir: () => string, arg1: string) {
-  return path.join(tmpdir(), arg1);
 }
