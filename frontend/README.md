@@ -15,7 +15,7 @@
 
 | Service | Live URL |
 | :--- | :--- |
-| **Production Web Application** | [https://clipstudio-pro.vercel.app](https://clipstudio-pro.vercel.app) |
+| **Production Web Application** | [https://clipstudio-pro-one.vercel.app/](https://clipstudio-pro-one.vercel.app/) |
 | **Connected Live Backend API** | [https://clipstudio-pro.onrender.com](https://clipstudio-pro.onrender.com) |
 | **Interactive API Documentation** | [https://clipstudio-pro.onrender.com/api/docs](https://clipstudio-pro.onrender.com/api/docs) |
 
@@ -141,7 +141,7 @@ To deploy this frontend to **Vercel**:
    - **Install Command**: `npm install`
 3. In **Environment Variables**:
    - Add `VITE_BACKEND_URL` = `https://clipstudio-pro.onrender.com`
-4. Deploy! Your app will be live at `https://clipstudio-pro.vercel.app`.
+4. Deploy! Your app will be live at `https://clipstudio-pro-one.vercel.app/`.
 
 ---
 
