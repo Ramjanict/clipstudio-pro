@@ -17,7 +17,7 @@ The high-performance REST and WebSocket API powering **ClipStudio Pro**. Built w
 | **Backend API Base** | [https://clipstudio-pro.onrender.com](https://clipstudio-pro.onrender.com) |
 | **Interactive Swagger API Docs** | [https://clipstudio-pro.onrender.com/api/docs](https://clipstudio-pro.onrender.com/api/docs) |
 | **Alternative Swagger Route** | [https://clipstudio-pro.onrender.com/docs](https://clipstudio-pro.onrender.com/docs) |
-| **Production Frontend App** | [https://clipstudio-pro.vercel.app](https://clipstudio-pro.vercel.app) |
+| **Production Frontend App** | [https://clipstudio-pro-one.vercel.app/](https://clipstudio-pro-one.vercel.app/) |
 
 ---
 

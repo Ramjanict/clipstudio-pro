@@ -1,6 +1,6 @@
 # ClipStudio Pro — Professional Cloud & In-Browser Video Editing Suite
 
-[![Frontend](https://img.shields.io/badge/Frontend-Vercel-000000?logo=vercel&logoColor=white)](https://clipstudio-pro.vercel.app)
+[![Frontend](https://img.shields.io/badge/Frontend-Vercel-000000?logo=vercel&logoColor=white)](https://clipstudio-pro-one.vercel.app/)
 [![Backend](https://img.shields.io/badge/Backend-Render-46E3B7?logo=render&logoColor=white)](https://clipstudio-pro.onrender.com)
 [![Swagger](https://img.shields.io/badge/API%20Docs-Swagger-85EA2D?logo=swagger&logoColor=black)](https://clipstudio-pro.onrender.com/api/docs)
 [![Database](https://img.shields.io/badge/Database-Neon%20Postgres-00E599?logo=postgresql&logoColor=white)](https://neon.tech/)
@@ -15,7 +15,7 @@
 
 | Component | Service | Live Production URL |
 | :--- | :--- | :--- |
-| **Frontend Web App** | Vercel | [https://clipstudio-pro.vercel.app](https://clipstudio-pro.vercel.app) |
+| **Frontend Web App** | Vercel | [https://clipstudio-pro-one.vercel.app/](https://clipstudio-pro-one.vercel.app/) |
 | **Backend REST & WS API** | Render | [https://clipstudio-pro.onrender.com](https://clipstudio-pro.onrender.com) |
 | **Interactive API Documentation** | Swagger / OpenAPI | [https://clipstudio-pro.onrender.com/api/docs](https://clipstudio-pro.onrender.com/api/docs) |
 

@@ -44,8 +44,6 @@ coverage/
 # ==============================================================================
 # Environment Files & Secrets (Never commit secrets)
 # ==============================================================================
-.env
-.env.*
 *.env
 backend/.env
 frontend/.env
@@ -96,7 +94,7 @@ Thumbs.db
 Desktop.ini
 .idea/
 *.iml
-.vscode/*
 !.vscode/settings.json
 !.vscode/extensions.json
 !.vscode/launch.json
+config.bat
